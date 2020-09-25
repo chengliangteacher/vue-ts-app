@@ -1,5 +1,5 @@
 <template>
-    <el-menu :default-active="activeIndex" class="el-menu-vertical-demo" :collapse="isCollapse" @open="handleOpen" @close="handleClose">
+    <el-menu :default-active="activeIndex" class="el-menu-vertical-demo" :collapse="isCollapse">
         <template v-for="(item, index) in routesData">
             <router-link v-if="!item.hasChildren" :key="index" :to="item.url">
                 <el-menu-item :index="item.id">
@@ -14,44 +14,58 @@
 
 
 <script lang="ts">
-import { Component, Vue, Emit } from "vue-property-decorator";
+import { Component, Vue, Watch } from "vue-property-decorator";
 import Submenu from "./child/submenu.vue";
+import { State } from "vuex-class";
+/* 
+    @description  类型声明
+    @autor        cheng liang
+    @create       2020-09-25 10:56"
+    @params       
+    @return       
+*/
 interface Item {
     url: string;
     id: string;
-    hasChildren: boolean,
-    children: Array<Item>
+    hasChildren: boolean;
+    children: Array<Item>;
 }
 @Component({
     components: {
         Submenu
-    },
-    computed: {
-        isCollapse(): boolean {
-            return this.$store.state.isCollapse;
-        },
-        routesData(): Array<Item> {
-            return this.$store.state.routesData;
-        }
     }
 })
 export default class banner extends Vue {
     public activeIndex: string = "";
-    public handleOpen(key: any, keyPath: any): void {
-        console.log(key, keyPath);
+    /* 
+        @description  状态机-state
+        @autor        cheng liang
+        @create       2020-09-25 10:59"
+        @params       
+        @return       
+    */
+    @State("isCollapse") public isCollapse!: boolean;
+    @State("routesData") public routesData!: Array<Item>;
+    /* 
+        @description  watch监听
+        @autor        cheng liang
+        @create       2020-09-25 11:02"
+        @params       
+        @return       
+    */
+    @Watch("$route")
+    public handleWatchRoute(): void {
+        this.activeIndex = "";
+        this.handleDealRouter(this.routesData);
     }
-    public handleClose(key: any, keyPath: any): void {
-        console.log(key, keyPath);
-    }
-    //=====================================触发父组件edit事件====================================//
-    @Emit("edit")
-    /**
-     * edit
-     */
-    public edit(): number {
-        return 6;
-    }
-    public handleDealRouter(data: Array<Item>) {
+    /* 
+        @description  methods
+        @autor        cheng liang
+        @create       2020-09-25 10:57"
+        @params       
+        @return       
+    */
+    public handleDealRouter(data: Item[]) {
         const currentData = this.$route.path;
         data.forEach(item => {
             if (!this.activeIndex && item.url === currentData) {
@@ -61,8 +75,15 @@ export default class banner extends Vue {
             }
         });
     }
+    /* 
+        @description  生命周期
+        @autor        cheng liang
+        @create       2020-09-25 10:57"
+        @params       
+        @return       
+    */
     mounted() {
-        this.handleDealRouter(this.$store.state.routesData);
+        this.handleDealRouter(this.routesData);
     }
 }
 </script>
@@ -71,6 +92,7 @@ export default class banner extends Vue {
 .el-menu-vertical-demo:not(.el-menu--collapse) {
     width: 200px;
     min-height: 400px;
+    overflow-x: hidden;
 }
 </style>
 

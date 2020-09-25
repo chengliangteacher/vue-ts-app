@@ -18,7 +18,7 @@
 <script lang="ts">
 import { Vue } from "vue-property-decorator";
 export default class Login extends Vue {
-    formInfo: object = {
+    public formInfo = {
         userName: "",
         passWord: ""
     };
@@ -26,21 +26,21 @@ export default class Login extends Vue {
 </script>
 
 <style lang="scss">
-    .login{
-        width: 100vw;
-        height: 100vh;
-        overflow: hidden;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        .form{
-            background: white;
-            min-width: 350px;
-            box-shadow: 0px 0px 10px #eee;
-            padding: 2rem;
-            .el-form-item{
-                margin-bottom: 22px !important;
-            }
+.login {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .form {
+        background: white;
+        min-width: 350px;
+        box-shadow: 0px 0px 10px #eee;
+        padding: 2rem;
+        .el-form-item {
+            margin-bottom: 22px !important;
         }
     }
+}
 </style>

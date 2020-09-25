@@ -1,20 +1,26 @@
 <template>
     <div class="layout">
-        <div class="header">
+        <div v-if="!showLayoutX" class="header">
             <Header />
         </div>
+        <div v-else class="layout-left layout-left-with">
+            <banner @edit="edit" />
+        </div>
         <div class="layout-container">
-            <div class="layout-left">
+            <div v-if="showLayoutX" class="header">
+                <Header />
+            </div>
+            <div v-else class="layout-left">
                 <banner @edit="edit" />
             </div>
-            <el-card class="layout-main">
-                <div slot="header">
-                    <Breadcrumb />
+            <div class="layout-main">
+                <tags-view v-if="showTagsView"></tags-view>
+                <div :class="{ 'layout-content-with': !showTagsView }" class="layout-content">
+                    <s-content>
+                        <Breadcrumb />
+                    </s-content>
                 </div>
-                <transition name="fade">
-                    <router-view></router-view>
-                </transition>
-            </el-card>
+            </div>
         </div>
         <SystemSet />
     </div>
@@ -26,17 +32,39 @@ import banner from "./banner.vue";
 import Header from "./header.vue";
 import Breadcrumb from "./breadcrumb.vue";
 import SystemSet from "./system-set.vue";
+import TagsView from "./tags-view.vue";
 @Component({
     components: {
         banner,
         Header,
         Breadcrumb,
         SystemSet,
+        "tags-view": TagsView
     }
 })
 export default class layout extends Vue {
+    /* 
+        @description  data
+        @autor        cheng liang
+        @create       2020-09-25 16:41"
+        @params       
+        @return       
+    */
     public edit(val: number): void {
         console.log(val);
+    }
+    /* 
+        @description  计算属性
+        @autor        cheng liang
+        @create       2020-09-25 16:41"
+        @params       
+        @return       
+    */
+    get showTagsView(): boolean {
+        return this.$store.state.showTagsView;
+    }
+    get showLayoutX(): boolean {
+        return this.$store.state.showLayoutX;
     }
 }
 </script>
@@ -44,26 +72,34 @@ export default class layout extends Vue {
 <style lang="scss">
 .layout {
     .header {
-        width: 100vw;
+        // width: 100%;
         overflow: hidden;
         height: 60px;
         background: white;
         padding: 0 1rem;
     }
+
     .layout-container {
-        display: flex;
-        .layout-left {
-            height: calc(100vh - 60px);
-            background: $white;
-            overflow-y: auto;
-        }
-        .layout-main {
-            flex-grow: 1;
-            height: calc(100vh - 80px);
-            margin: 10px 10px 0 10px;
+        width: 100vw;
+    }
+    .layout-main {
+        height: calc(100vh - 60px);
+        .layout-content {
+            height: calc(100vh - 90px);
             padding: 10px;
             overflow-y: auto;
-            background-color: $white;
+            &.layout-content-with {
+                height: 100%;
+            }
+        }
+    }
+    .layout-left {
+        height: calc(100vh - 60px);
+        background: $white;
+        overflow-y: auto;
+        float: left;
+        &.layout-left-with{
+            height: 100vh !important;
         }
     }
 }

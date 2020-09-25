@@ -9,7 +9,9 @@ import "./components/index"
 import minxin from "./mixin/mixin";
 import "./directive/directive.ts";
 import "./scss/element-variables/element-variables.scss" //--------------------主题色
+import Contextmenu from "vue-contextmenujs";
 
+Vue.use(Contextmenu);
 Vue.use(ElementUI);
 
 Vue.prototype.$count = [1, 2];

@@ -2,10 +2,12 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
 import Login from "../views/login.vue";
-import test from "./model/test";
 import Layout from "../views/layout/index.vue"
 import NProgress from "nprogress"
 import "nprogress/nprogress.css"
+//=====================================model页====================================//
+import test from "./model/test";
+import home from "./model/home";
 
 Vue.use(VueRouter);
 
@@ -47,7 +49,8 @@ const routes: Array<RouteConfig> = [
         path: "/portal",
         component: Layout,
         children: [
-            ...test
+            ...test,
+            ...home
         ]
     },
 ];

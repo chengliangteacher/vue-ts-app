@@ -1,4 +1,11 @@
 /* eslint-disable no-unused-vars */
+/* 
+    @description  首页
+    @autor        cheng liang
+    @create       2020-09-24 14:35"
+    @params       
+    @return       
+*/
 import { RouteConfig } from "vue-router";
 
 const test: Array<RouteConfig> = [
