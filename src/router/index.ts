@@ -64,6 +64,7 @@ const router = new VueRouter({
 //=====================================全局前置守卫====================================//
 router.beforeEach((to, from, next) => {
     NProgress.start()
+    Vue.prototype.$handleRouterBarColor();
     if (to.matched.length) {
         next();
     } else {

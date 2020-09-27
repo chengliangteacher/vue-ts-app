@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-drag="true" style="width:100px;height:100px;background:black"></div>
+        <div v-drag style="width:100px;height:100px;background:black"></div>
     </div>
 </template>
 

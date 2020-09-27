@@ -18,7 +18,7 @@ import HelloWorld from "@/components/HelloWorld.vue"; // @ is an alias to /src
     data() {
         return {
             msg: "111"
-        }
+        };
     }
 })
 export default class Home extends Vue {
@@ -29,12 +29,13 @@ export default class Home extends Vue {
     private destoryed() {
         console.log("destory");
     }
-    created() {
-    }
+    created() {}
     mounted() {
         this.axios
             .get("http://sz.xrdev.cn/inspection/plans?pageNum=1&pageSize=20")
-            .then((res: any) => {})
+            .then((res: any) => {
+                console.log(res.data)
+            })
             .catch((err: any) => {
                 console.error(err);
             });

@@ -1,5 +1,5 @@
 <template>
-    <div>testE</div>
+    <el-tag v-copy="'math'">testE</el-tag>
 </template>
 
 <script lang="ts">

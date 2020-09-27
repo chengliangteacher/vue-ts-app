@@ -21,5 +21,6 @@ export interface State {
     showTagsView: boolean,
     showLayoutX: boolean,
     showFullScreen: boolean,
-    showMenuCollapse: boolean
+    showMenuCollapse: boolean,
+    themeColor: string
 }

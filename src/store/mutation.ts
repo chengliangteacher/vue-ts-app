@@ -63,4 +63,8 @@ export default {
     SET_SHOW_MENU_COLLAPSE(state: State) {
         state.showMenuCollapse = !state.showMenuCollapse
     },
+    //=====================================设置主题颜色====================================//
+    SET_THEME_COLOR(state: State, color: string) {
+        state.themeColor = color;
+    }
 }

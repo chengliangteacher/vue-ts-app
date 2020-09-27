@@ -1,5 +1,7 @@
 <template>
-    <div>testC</div>
+    <div>
+        <input v-focus />
+    </div>
 </template>
 
 <script lang="ts">

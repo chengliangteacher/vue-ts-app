@@ -3,9 +3,7 @@
         <div slot="header">
             <slot></slot>
         </div>
-        <transition name="fade">
-            <router-view></router-view>
-        </transition>
+        <router-view></router-view>
     </el-card>
 </template>
 

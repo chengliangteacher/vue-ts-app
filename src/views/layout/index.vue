@@ -22,7 +22,7 @@
                 </div>
             </div>
         </div>
-        <SystemSet />
+        <SystemSet v-if="showSystemSet" />
     </div>
 </template>
 
@@ -66,6 +66,9 @@ export default class layout extends Vue {
     get showLayoutX(): boolean {
         return this.$store.state.showLayoutX;
     }
+    get showSystemSet(): boolean {
+        return this.$store.state.showSystemSet;
+    }
 }
 </script>
 
@@ -98,7 +101,7 @@ export default class layout extends Vue {
         background: $white;
         overflow-y: auto;
         float: left;
-        &.layout-left-with{
+        &.layout-left-with {
             height: 100vh !important;
         }
     }

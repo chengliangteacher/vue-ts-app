@@ -1,5 +1,5 @@
 <template>
-    <div class="login">
+    <div v-bubble class="login" style="background: #409EFF;!important">
         <el-form ref="form" :model="formInfo" label-width="60px" class="form">
             <h3 class="text-center">登录</h3>
             <el-form-item label="登录名">
@@ -34,6 +34,8 @@ export default class Login extends Vue {
     align-items: center;
     justify-content: center;
     .form {
+        position: absolute;
+        z-index: 100;
         background: white;
         min-width: 350px;
         box-shadow: 0px 0px 10px #eee;
