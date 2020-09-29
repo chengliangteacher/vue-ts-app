@@ -5,6 +5,6 @@ declare module "vue/types/vue" {
         $count: any,
         axios: any,
         $contextmenu: any,
-        $handleRouterBarColor: () => void 
+        $handleRouterBarColor: () => void,
     }
 }

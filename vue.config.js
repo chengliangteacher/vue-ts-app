@@ -40,7 +40,10 @@ module.exports = {
                 ws: false,
                 changeOrigin: true, //--------跨域请求
             },
-        }
+        },
+        open: true, // 启动默认打开网址
+        port: "8080", // 热加载端口
+        https: false, // 启用https
     },
     runtimeCompiler: false, //--------是否使用包含运行时编译器的 Vue 构建版本
     transpileDependencies: [], //--------通过 Babel 显式转译一个依赖
