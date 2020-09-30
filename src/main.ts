@@ -8,6 +8,7 @@ import "element-ui/lib/theme-chalk/index.css"
 import "./components/index"
 import minxin from "./mixin/mixin";
 import "./directive/index";
+import "./filter/index";
 import Contextmenu from "vue-contextmenujs";
 import { handleRouterBarColor } from "./lib/utils"
 
