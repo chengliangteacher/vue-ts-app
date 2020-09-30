@@ -2,7 +2,7 @@
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios"
 //=====================================自定义axios实例====================================//
 const instance = axios.create({
-    baseURL: "", // 公共url
+    baseURL: "http://sz.xrdev.cn/inspection", // 公共url
     timeout: 1000, // 最大加载时间
     headers: "", // header
 });
@@ -12,7 +12,9 @@ instance.interceptors.request.use((config: AxiosRequestConfig) => {
 
 instance.interceptors.response.use(
     (response: AxiosResponse) => {
-        return response.data;
+        if (response.data.code === 200) {
+            return response.data;
+        }
     },
     (error: AxiosError) => {
         return Promise.reject(error);

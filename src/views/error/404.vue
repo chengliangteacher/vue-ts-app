@@ -1,6 +1,6 @@
 <template>
     <div class="vw-100 vh-100 d-flex center bg-white">
-        <img src="@/assets/404.png" alt="">
+        <img src="@/assets/images/404.png" alt="">
         <div>
             <h3>页面走丢了</h3>
             <router-link to="/portal/home">

@@ -1,6 +1,6 @@
 <template>
     <div class="home">
-        <img alt="Vue logo" src="../assets/logo.png" />
+        <img alt="Vue logo" src="../assets/images/logo.png" />
         <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
         <span>{{ message }}</span>
         <el-button type="danger" size="mini" @click="hanldeClick(1)">click</el-button>
