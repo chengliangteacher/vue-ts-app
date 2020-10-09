@@ -5,17 +5,17 @@
 npm install/cnpm install
 ```
 
-### 启动webpack-dev-server
+## 启动webpack-dev-server
 ```
 npm run serve
 ```
 
-### 编译打包
+## 编译打包
 ```
 npm run build
 ```
 
-### Lints and fixes files
+## Lints and fixes files
 ```
 npm run lint
 ```
